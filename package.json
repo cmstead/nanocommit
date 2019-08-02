@@ -6,8 +6,12 @@
   "bin": {
     "nanocommit": "index.js"
   },
+  "nanocommit": {
+    "testCommand": "node ./fake-test.js",
+    "blindCommit": true
+  },
   "scripts": {
-    "test": "node ./fake-test.js"
+    "test": "node ./index.js"
   },
   "repository": {
     "type": "git",

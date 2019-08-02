@@ -4,7 +4,7 @@ const shortStatus = 'git status --short';
 const patchCommitCommand = 'git commit --patch -m {message}';
 const addFileCommand = 'git add {filepath}';
 const addAll = 'git add --all';
-const commit = 'git commit -m {message}'
+const commit = 'git commit -m "{message}"';
 
 function getShortStatus() {
     return childProcess
