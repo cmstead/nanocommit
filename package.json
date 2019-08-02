@@ -1,0 +1,30 @@
+{
+  "name": "nanocommit",
+  "version": "1.0.0",
+  "description": "Commit every time your tests pass, no fuss, no muss",
+  "main": "index.js",
+  "bin": {
+    "nanocommit": "index.js"
+  },
+  "scripts": {
+    "test": "node ./fake-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmstead/nanocommit.git"
+  },
+  "keywords": [
+    "testing",
+    "tdd",
+    "git",
+    "commit",
+    "agile-tools",
+    "productivity"
+  ],
+  "author": "Chris Stead",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/cmstead/nanocommit/issues"
+  },
+  "homepage": "https://github.com/cmstead/nanocommit#readme"
+}

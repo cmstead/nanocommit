@@ -1,0 +1,4 @@
+{
+    "testCommand": "npm test",
+    "blindCommit": false
+}
