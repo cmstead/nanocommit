@@ -1,7 +1,7 @@
 const promptUser = require('./prompt-user');
 
 function addFile(fileName, callback) {
-    const message = `Stage file, "${fileName}"? `;
+    const message = `Stage file, "${fileName}"? (Y/n) `;
 
     promptUser(message, callback);
 }
