@@ -43,7 +43,7 @@ This is a configuration with nanocommit installed locally:
 ```json
 {
     "scripts": {
-        "test": "node ./node_modules/nanocommit"
+        "test": "node ./node_modules/nanocommit/"
     },
     "nanocommit": {
         "testCommand": "mocha ./spec/**/*.spec.js",
