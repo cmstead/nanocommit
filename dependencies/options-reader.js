@@ -1,3 +1,5 @@
+const path = require('path');
+
 function valueOrDefault(value, defaultValue) {
     return typeof value !== 'undefined'
         ? value
@@ -17,7 +19,8 @@ function mergeOptions (destination, source) {
 } 
 
 function getUserOptions() {
-    const packageFile = require('../package.json');
+    const packagePath = path.join(process.cwd(), 'package.json');
+    const packageFile = require(packagePath);
     return typeof packageFile.nanocommit === 'object'
         ? packageFile.nanocommit
         : {};
