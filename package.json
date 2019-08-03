@@ -7,12 +7,10 @@
     "nanocommit": "index.js"
   },
   "nanocommit": {
-    "testCommand": "node ./fake-test.js",
-    "blindCommit": true,
-    "commitMessage": "Added commit message bypass"
+    "testCommand": "node ./fake-test.js"
   },
   "scripts": {
-    "test": "node ./index.js"
+    "test": "node ./"
   },
   "repository": {
     "type": "git",

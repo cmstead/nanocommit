@@ -1,8 +1,8 @@
 const childProcess = require('child_process');
 
 const shortStatus = 'git status --short';
-const patchCommitCommand = 'git commit --patch -m {message}';
-const addFileCommand = 'git add {filepath}';
+const patchCommitCommand = 'git commit --patch -m "{message}"';
+const addFileCommand = 'git add "{filepath}"';
 const addAll = 'git add --all';
 const commit = 'git commit -m "{message}"';
 
