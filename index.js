@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const commandActionFactory = require('./dependencies/commit-action-factory');
 const optionsReader = require('./dependencies/options-reader');
 const testRunner = require('./dependencies/test-runnner');
