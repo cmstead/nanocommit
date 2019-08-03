@@ -8,7 +8,8 @@
   },
   "nanocommit": {
     "testCommand": "node ./fake-test.js",
-    "blindCommit": true
+    "blindCommit": true,
+    "commitMessage": "Added commit message bypass"
   },
   "scripts": {
     "test": "node ./index.js"
@@ -22,7 +23,7 @@
     "tdd",
     "git",
     "commit",
-    "agile-tools",
+    "agile tools",
     "productivity"
   ],
   "author": "Chris Stead",
