@@ -61,4 +61,20 @@ There are currently three options for configuration:
 
 - **commitMessage** -- The commitMessage default is `null`, requiring the user to enter a commit message. If a commit message is specified, nanocommit will not prompt for a commit message, instead using the message specified, appended with a date/time stamp.
 
+## Running nanocommit ##
 
+It is possible to run nanocommit in a couple different ways: locally and as a global script.
+
+When nanocommit is installed locally, run this from your package root:
+
+```
+node ./node_modules/nanocommit/
+```
+
+If nanocommit is installed globally, just run this:
+
+```
+nanocommit
+```
+
+That's it!
