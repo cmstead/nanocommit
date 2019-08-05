@@ -1,40 +1,40 @@
-const childProcess = require('child_process');
+function gitCommands(child_process) {
+    const childProcess = child_process;
 
-const shortStatus = 'git status --short';
-const patchCommitCommand = 'git commit --patch -m "{message}"';
-const addFileCommand = 'git add "{filepath}"';
-const addAll = 'git add --all';
-const commit = 'git commit -m "{message}"';
+    const shortStatus = 'git status --short';
+    const patchCommitCommand = 'git commit --patch -m "{message}"';
+    const addFileCommand = 'git add "{filepath}"';
+    const addAll = 'git add --all';
+    const commit = 'git commit -m "{message}"';
 
-function getShortStatus() {
-    return childProcess
-        .execSync(shortStatus, { encoding: 'utf8' });
-}
+    function getShortStatus() {
+        return childProcess
+            .execSync(shortStatus, { encoding: 'utf8' });
+    }
 
-function patchCommit(commitMessage) {
-    const command = patchCommitCommand
-        .replace('{message}', commitMessage);
+    function patchCommit(commitMessage) {
+        const command = patchCommitCommand
+            .replace('{message}', commitMessage);
 
-    childProcess.execSync(command, { stdio: 'inherit' });
-}
+        childProcess.execSync(command, { stdio: 'inherit' });
+    }
 
-function addFile(filepath) {
-    const command = addFileCommand.replace('{filepath}', filepath);
+    function addFile(filepath) {
+        const command = addFileCommand.replace('{filepath}', filepath);
 
-    childProcess.execSync(command);
-}
+        childProcess.execSync(command);
+    }
 
-function addAllChanges() {
-    childProcess.execSync(addAll, { stdio: 'inherit' });
-}
+    function addAllChanges() {
+        childProcess.execSync(addAll, { stdio: 'inherit' });
+    }
 
-function commitWithMessage(message) {
-    const commitCommand = commit.replace('{message}', message);
+    function commitWithMessage(message) {
+        const commitCommand = commit.replace('{message}', message);
 
-    childProcess.execSync(commitCommand, { stdio: 'inherit' });
-}
+        childProcess.execSync(commitCommand, { stdio: 'inherit' });
+    }
 
-function gitCommands () {
     return {
         addAllChanges: addAllChanges,
         addFile: addFile,
@@ -42,7 +42,7 @@ function gitCommands () {
         getShortStatus: getShortStatus,
         patchCommit: patchCommit
     }
-    
+
 }
 
 module.exports = gitCommands;
