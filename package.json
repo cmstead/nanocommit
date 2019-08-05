@@ -7,7 +7,7 @@
     "nanocommit": "index.js"
   },
   "nanocommit": {
-    "testCommand": "node ./fake-test.js"
+    "testCommand": "node ./test-proxy.js"
   },
   "scripts": {
     "test": "node ./"
