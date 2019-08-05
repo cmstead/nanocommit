@@ -18,6 +18,7 @@ function getUntrackedFiles() {
 }
 
 module.exports = {
+    getShortStatusTokens: getShortStatusTokens,
     getUntrackedFiles: getUntrackedFiles
 }
 
