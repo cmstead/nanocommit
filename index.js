@@ -35,5 +35,6 @@ function commitChanges () {
 }
 
 if(shortStatusTokens.length > 0) {
+    console.log(`"${shortStatusTokens[0]}"`);
     commitChanges();
 }
