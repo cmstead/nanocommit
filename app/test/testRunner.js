@@ -1,9 +1,13 @@
 function testRunner (
-    child_process
+    child_process,
+    optionsReader
 ) {
+    const args = process.argv.slice(2);
     const childProcess = child_process;
+    const options = optionsReader.readOptions()
 
-    function runTests(baseCommand, args) {
+    function runTests() {
+        const baseCommand = options.testCommand;
         const testCommand = [baseCommand].concat(args).join(' ');
     
         childProcess.execSync(testCommand, { stdio: 'inherit' });

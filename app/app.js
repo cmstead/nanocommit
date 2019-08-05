@@ -1,21 +1,16 @@
 function app(
     changeCommitHelper,
-    optionsReader,
     testRunner,
 ) {
-    const options = optionsReader.readOptions();
-    const args = process.argv.slice(2);
-
     function testAndCommit() {
 
         try {
-            testRunner.runTests(options.testCommand, args);
+            testRunner.runTests();
 
-            if (changeCommitHelper.changesExistToCommit()) {
-                changeCommitHelper.commitChanges();
-            }
+            changeCommitHelper.commitChanges();
         } catch (e) {
             console.log('Tests failed, skipping commit.');
+            
             process.exit(1);
         }
     }
