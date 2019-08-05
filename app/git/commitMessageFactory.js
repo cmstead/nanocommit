@@ -4,18 +4,30 @@ function commitMessageFactory(
     optionsReader
 ) {
     const options = optionsReader.readOptions();
-    
-    function getCommitMessage(callback) {
-        if (typeof options.commitMessage === 'string') {
-            const message = options.commitMessage
-                + ' ' + localDate.getLocalDate();
 
+    function getMessageFromOptions(callback) {
+        const message = options.commitMessage
+            + ' ' + localDate.getLocalDate();
+
+        callback(message);
+    }
+
+    function getMessageFromUser(callback) {
+        cliPrompts.getCommitMessage(function (message) {
             callback(message);
-        } else {
-            cliPrompts.getCommitMessage(function (message) {
-                callback(message);
-            });
-        }
+        });
+    }
+
+    function hasDefaultMessage() {
+        return typeof options.commitMessage === 'string';
+    }
+
+    function getCommitMessage(callback) {
+        const getMessageAction = hasDefaultMessage()
+            ? getMessageFromOptions
+            : getMessageFromUser;
+
+        getMessageAction(callback);
     }
 
     return {
