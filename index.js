@@ -1,3 +1,5 @@
-const container = require('./container');
+#!/usr/bin/env node
 
-container.build('app').testAndCommit();
+require('./container')
+    .build('app')
+    .testAndCommit();

@@ -17,8 +17,11 @@ function getUntrackedFiles() {
     return getUntrackedFilePaths(shortStatusTokens);
 }
 
-module.exports = {
-    getShortStatusTokens: getShortStatusTokens,
-    getUntrackedFiles: getUntrackedFiles
+function untrackedFileHelper () {
+    return {
+        getShortStatusTokens: getShortStatusTokens,
+        getUntrackedFiles: getUntrackedFiles
+    }
 }
 
+module.exports = untrackedFileHelper;

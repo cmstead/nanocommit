@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
-const untrackedFileHelper = require('./untracked-file-helper');
-
-
 function app(
     cliPrompts,
     commitActionFactory,
     localDate,
     optionsReader,
-    testRunner
+    testRunner,
+    untrackedFileHelper
 ) {
     const options = optionsReader.readOptions();
     const args = process.argv.slice(2);

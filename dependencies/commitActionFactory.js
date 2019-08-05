@@ -1,11 +1,8 @@
 const gitCommands = require('./git-commands');
-const untrackedFileHelper = require('./untracked-file-helper');
-
-
-
 
 function commitActionFactory(
-    cliPrompts
+    cliPrompts,
+    untrackedFileHelper
 ) {
     function promptForFileAdd(untrackedFiles, callback) {
         const currentFile = untrackedFiles.shift();
