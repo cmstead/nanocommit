@@ -1,33 +1,34 @@
 #!/usr/bin/env node
 
-const commandActionFactory = require('./commit-action-factory');
-const optionsReader = require('./options-reader');
+const commitActionFactory = require('./commit-action-factory');
 const testRunner = require('./test-runnner');
 const cliPrompts = require('./cli-prompts');
-const localDate = require('./local-date');
 const untrackedFileHelper = require('./untracked-file-helper');
 
-const options = optionsReader.readOptions();
-const args = process.argv.slice(2);
-const shortStatusTokens = untrackedFileHelper.getShortStatusTokens();
 
-const commitAction = commandActionFactory.getCommitAction(options.blindCommit);
+function app(
+    localDate,
+    optionsReader
+) {
+    const options = optionsReader.readOptions();
+    const args = process.argv.slice(2);
+    const shortStatusTokens = untrackedFileHelper.getShortStatusTokens();
 
-function commitChanges() {
-    if (typeof options.commitMessage === 'string') {
-        const message = options.commitMessage
-            + ' ' + localDate.getLocalDate();
+    const commitAction = commitActionFactory.getCommitAction(options.blindCommit);
 
-        commitAction(message);
-    } else {
-        cliPrompts.getCommitMessage(function (message) {
+    function commitChanges() {
+        if (typeof options.commitMessage === 'string') {
+            const message = options.commitMessage
+                + ' ' + localDate.getLocalDate();
+
             commitAction(message);
-        });
+        } else {
+            cliPrompts.getCommitMessage(function (message) {
+                commitAction(message);
+            });
+        }
     }
-}
 
-
-function app() {
     function testAndCommit() {
 
         try {
