@@ -1,18 +1,16 @@
-const promptUser = require('./prompt-user');
+function cliPrompts(promptUser) {
+    function addFile(fileName, callback) {
+        const message = `Stage file, "${fileName}"? (Y/n) `;
 
-function addFile(fileName, callback) {
-    const message = `Stage file, "${fileName}"? (Y/n) `;
+        promptUser(message, callback);
+    }
 
-    promptUser(message, callback);
-}
+    function getCommitMessage(callback) {
+        const message = 'What changes did you make? ';
 
-function getCommitMessage(callback) {
-    const message = 'What changes did you make? ';
+        promptUser(message, callback);
+    }
 
-    promptUser(message, callback);
-}
-
-function cliPrompts () {
     return {
         addFile: addFile,
         getCommitMessage: getCommitMessage
