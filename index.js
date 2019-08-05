@@ -13,28 +13,30 @@ const shortStatusTokens = untrackedFileHelper.getShortStatusTokens();
 
 const commitAction = commandActionFactory.getCommitAction(options.blindCommit);
 
-function commitChanges () {
-    try{
+function commitChanges() {
+    try {
         testRunner.runTests(options.testCommand, args);
-    
-        if(typeof options.commitMessage === 'string') {
+
+        if (typeof options.commitMessage === 'string') {
             const message = options.commitMessage
                 + ' ' + localDate.getLocalDate();
-                
+
             commitAction(message);
         } else {
-            cliPrompts.getCommitMessage(function(message) {
+            cliPrompts.getCommitMessage(function (message) {
                 commitAction(message);
             });
         }
-    
+
     } catch (e) {
         console.log('Tests failed, skipping commit.');
         process.exit(1);
     }
 }
 
-if(shortStatusTokens.length > 0) {
-    console.log(`"${shortStatusTokens[0]}"`);
+if (
+    shortStatusTokens.length > 0
+    && Boolean(shortStatusTokens[0])
+) {
     commitChanges();
 }
