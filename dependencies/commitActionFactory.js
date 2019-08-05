@@ -1,7 +1,6 @@
-const gitCommands = require('./git-commands');
-
 function commitActionFactory(
     cliPrompts,
+    gitCommands,
     untrackedFileHelper
 ) {
     function promptForFileAdd(untrackedFiles, callback) {

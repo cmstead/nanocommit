@@ -1,23 +1,21 @@
-const gitCommands = require('./git-commands');
+function untrackedFileHelper(gitCommands) {
+    function getShortStatusTokens() {
+        return gitCommands
+            .getShortStatus()
+            .split('\n');
+    }
 
-function getShortStatusTokens() {
-    return gitCommands
-        .getShortStatus()
-        .split('\n');
-}
+    function getUntrackedFilePaths(shortStatusTokens) {
+        return shortStatusTokens
+            .filter(token => /^\?\?/.test(token.trim()))
+            .map(token => token.trim().slice(3));
+    }
 
-function getUntrackedFilePaths(shortStatusTokens) {
-    return shortStatusTokens
-        .filter(token => /^\?\?/.test(token.trim()))
-        .map(token => token.trim().slice(3));
-}
+    function getUntrackedFiles() {
+        const shortStatusTokens = getShortStatusTokens();
+        return getUntrackedFilePaths(shortStatusTokens);
+    }
 
-function getUntrackedFiles() {
-    const shortStatusTokens = getShortStatusTokens();
-    return getUntrackedFilePaths(shortStatusTokens);
-}
-
-function untrackedFileHelper () {
     return {
         getShortStatusTokens: getShortStatusTokens,
         getUntrackedFiles: getUntrackedFiles

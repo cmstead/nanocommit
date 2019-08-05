@@ -34,11 +34,15 @@ function commitWithMessage(message) {
     childProcess.execSync(commitCommand, { stdio: 'inherit' });
 }
 
-module.exports = {
-    addAllChanges: addAllChanges,
-    addFile: addFile,
-    commitWithMessage: commitWithMessage,
-    getShortStatus: getShortStatus,
-    patchCommit: patchCommit
+function gitCommands () {
+    return {
+        addAllChanges: addAllChanges,
+        addFile: addFile,
+        commitWithMessage: commitWithMessage,
+        getShortStatus: getShortStatus,
+        patchCommit: patchCommit
+    }
+    
 }
 
+module.exports = gitCommands;
