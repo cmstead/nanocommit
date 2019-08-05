@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 const commitActionFactory = require('./commit-action-factory');
-const testRunner = require('./test-runnner');
 const cliPrompts = require('./cli-prompts');
 const untrackedFileHelper = require('./untracked-file-helper');
 
 
 function app(
     localDate,
-    optionsReader
+    optionsReader,
+    testRunner
 ) {
     const options = optionsReader.readOptions();
     const args = process.argv.slice(2);
