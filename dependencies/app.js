@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const cliPrompts = require('./cli-prompts');
 const untrackedFileHelper = require('./untracked-file-helper');
 
 
 function app(
+    cliPrompts,
     commitActionFactory,
     localDate,
     optionsReader,

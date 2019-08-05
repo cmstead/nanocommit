@@ -12,7 +12,11 @@ function getCommitMessage(callback) {
     promptUser(message, callback);
 }
 
-module.exports = {
-    addFile: addFile,
-    getCommitMessage: getCommitMessage
+function cliPrompts () {
+    return {
+        addFile: addFile,
+        getCommitMessage: getCommitMessage
+    }
 }
+
+module.exports = cliPrompts;
