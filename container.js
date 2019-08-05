@@ -3,7 +3,7 @@
 const path = require('path');
 
 var config = {
-    cwd: path.join(__dirname, 'dependencies'),
+    cwd: path.join(__dirname, 'app'),
     modulePaths: [
         `**${path.sep}*.js`
     ],

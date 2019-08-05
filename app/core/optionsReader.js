@@ -1,22 +1,25 @@
-function optionsReader (path) {
+function optionsReader(
+    path,
+    defaultOptions
+) {
     function valueOrDefault(value, defaultValue) {
         return typeof value !== 'undefined'
             ? value
             : defaultValue;
     }
-    
-    function mergeOptions (destination, source) {
+
+    function mergeOptions(destination, source) {
         Object.keys(source)
-            .forEach(function(key) {
+            .forEach(function (key) {
                 destination[key] = valueOrDefault(
                     destination[key],
                     source[key]
                 )
             });
-    
+
         return destination;
-    } 
-    
+    }
+
     function getUserOptions() {
         const packagePath = path.join(process.cwd(), 'package.json');
         const packageFile = require(packagePath);
@@ -24,18 +27,13 @@ function optionsReader (path) {
             ? packageFile.nanocommit
             : {};
     }
-    
-    function getDefaultOptions() {
-        return require('../default-options.json');
-    }
-    
-    function readOptions () {
+
+    function readOptions() {
         const options = getUserOptions();
-        const defaultOptions = getDefaultOptions();
-    
+
         return mergeOptions(options, defaultOptions);
     }
-    
+
     return {
         readOptions
     };
