@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const commitActionFactory = require('./commit-action-factory');
 const cliPrompts = require('./cli-prompts');
 const untrackedFileHelper = require('./untracked-file-helper');
 
 
 function app(
+    commitActionFactory,
     localDate,
     optionsReader,
     testRunner

@@ -49,6 +49,10 @@ function getCommitAction(isBlindCommit) {
         : selectiveCommit;
 }
 
-module.exports = {
-    getCommitAction
-};
+function commitActionFactory () {
+    return {
+        getCommitAction
+    };
+}
+
+module.exports = commitActionFactory;
