@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/cmstead/nanocommit/issues"
   },
-  "homepage": "https://github.com/cmstead/nanocommit#readme"
+  "homepage": "https://github.com/cmstead/nanocommit#readme",
+  "dependencies": {
+    "dject": "^1.14.2"
+  }
 }
