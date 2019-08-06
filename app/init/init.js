@@ -28,6 +28,9 @@ function init(
             .then(() => prompts.conditionalTestOption(results))
             .then(storeResult)
             
+            .then(prompts.defaultCommandArgs)
+            .then(storeResult)
+            
             .then(prompts.replaceTestCommand)
             .then(storeResult)
             

@@ -7,14 +7,19 @@ function configBuilder () {
     function buildNanocommitConfig(initOptions, packageFile) {
         const config = {};
 
-        config.blindCommit = isYes(initOptions.blindCommit);
-
-        console.log('Use existing test command: ', initOptions);
         if(isYes(initOptions.useExistingTestCommand)) {
             config.testCommand = packageFile.scripts.test;
         } else {
             config.testCommand = initOptions.newTestCommand;
         }
+
+        if(isYes(initOptions.defaultCommandArgs)) {
+            config.defaultCommandArgs = initOptions.defaultCommandArgs.split(' ');
+        } else {
+            config.defaultCommandArgs = null;
+        }
+
+        config.blindCommit = isYes(initOptions.blindCommit);
 
         if(isYes(initOptions.useDefaultCommitMessage)) {
             config.commitMessage = initOptions.defaultCommitMessage;

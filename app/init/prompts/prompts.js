@@ -44,11 +44,21 @@ function prompts(
         }
     }
 
+    function defaultCommandArgs() {
+        console.log('\nDefault arguments are any arguments')
+        console.log('which are usually included in a test run.')
+        console.log('These arguments will be replaced when')
+        console.log('other arguments are provided from the command line.\n')
+        return prompt
+            .displayPrompt(initPrompts.defaultCommandArgs);
+    }
+
     return {
         conditionalDefaultCommitMessage,
         conditionalTestOption,
 
         blindCommit,
+        defaultCommandArgs,
         defaultCommitMessage,
         installLocalInstance,
         replaceTestCommand,

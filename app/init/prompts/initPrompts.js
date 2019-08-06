@@ -63,14 +63,23 @@ function initPrompts() {
         }
     ];
 
+    const defaultCommandArgs = [
+        {
+            name: 'defaultCommandArgs',
+            message: 'Enter any default test arguments: (press enter for none)',
+            type: 'input'
+        }
+    ];
+
     return {
+        blindCommit,
+        defaultCommandArgs,
+        defaultCommitMessage,
         installLocalInstance,
-        useExistingTest,
         replaceTestCommand,
         writeNewTestCommand,
-        blindCommit,
         useDefaultCommitMessage,
-        defaultCommitMessage
+        useExistingTest,
     };
 }
 

@@ -10,8 +10,9 @@
         "test": "nanocommit"
     },
     "nanocommit": {
-        "blindCommit": false,
         "testCommand": "node ./test-proxy.js",
+        "defaultCommandArgs": null,
+        "blindCommit": false,
         "commitMessage": null
     },
     "repository": {
@@ -37,4 +38,5 @@
         "dject": "^1.14.2",
         "inquirer": "^6.5.0"
     }
-}
+  }
+  
