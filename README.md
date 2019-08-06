@@ -8,11 +8,21 @@ Currently, nanocommit is aimed at Node and Javascript packages which contain a p
 
 ### Installation ###
 
+Easiest setup: For one-time menu-driven package-level installation, run the following command:
+
+```
+npx nanocommit --init
+```
+
+The above command will set up the configuration you need in your package to use nanocommit, and will install the package locally for you. The menu system should be straightforward.  If you have any feedback, please submit it to the nanocommit github issues board.
+
+
 You can either install nanocommit globally:
 
 ```
 npm install nanocommit -g
 ```
+
 Or you can install it locally to a package:
 
 ```
@@ -20,6 +30,12 @@ npm install nanocommit --save-dev
 ```
 
 ### Configuration ###
+
+**Note**
+
+You can skip this if you used the `nanocommit --init` setup method
+
+**Everyone else:**
 
 Out of the box, nanocommit will run `npm test` when you call it.  If that is all you want, you're done.  If you want to reconfigure things a bit, you can configure nanocommit in your package.json file:
 

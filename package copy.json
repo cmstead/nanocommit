@@ -1,0 +1,38 @@
+{
+  "name": "nanocommit",
+  "version": "1.0.4",
+  "description": "Commit every time your tests pass, no fuss, no muss",
+  "main": "index.js",
+  "bin": {
+    "nanocommit": "index.js"
+  },
+  "scripts": {
+    "test": "node ./test-proxy.js"
+  },
+  "nanocommit": {
+    "testCommand": "node ./test-proxy.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmstead/nanocommit.git"
+  },
+  "keywords": [
+    "testing",
+    "tdd",
+    "git",
+    "commit",
+    "agile tools",
+    "productivity"
+  ],
+  "author": "Chris Stead",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/cmstead/nanocommit/issues"
+  },
+  "homepage": "https://github.com/cmstead/nanocommit#readme",
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "dject": "^1.14.2",
+    "inquirer": "^6.5.0"
+  }
+}
