@@ -14,7 +14,7 @@ function prompts(
     }
 
     function conditionalTestOption(results) {
-        if (results.useExistingTestCommand === 'Yes') {
+        if (results.useExistingTestCommand === 'No') {
             return prompt.displayPrompt(initPrompts.writeNewTestCommand);
         } else {
             return Promise.resolve({});
@@ -36,7 +36,7 @@ function prompts(
     }
 
     function conditionalDefaultCommitMessage(results) {
-        if (results.useDefaultCommitMessage) {
+        if (results.useDefaultCommitMessage === 'Yes') {
             return prompt
                 .displayPrompt(initPrompts.defaultCommitMessage);
         } else {

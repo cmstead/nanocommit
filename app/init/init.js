@@ -1,4 +1,5 @@
 function init(
+    packageSetup,
     prompts
 ) {
 
@@ -39,7 +40,7 @@ function init(
             .then(() => prompts.conditionalDefaultCommitMessage(results))
             .then(storeResult)
             
-            .then(() => console.log(results))
+            .then(() => packageSetup.doSetup(results))
             .catch((error) => console.log('Unable to complete setup', error));
     }
 }
