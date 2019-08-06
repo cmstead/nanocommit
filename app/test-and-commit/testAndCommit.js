@@ -10,7 +10,8 @@ function testAndCommit(
                 {
                     name: 'okToCommit',
                     message: 'Special test case run, do you want to commit?',
-                    type: 'confirm'
+                    type: 'confirm',
+                    default: false
                 }
             ])
             .then(function(data) {
