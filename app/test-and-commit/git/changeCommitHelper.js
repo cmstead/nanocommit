@@ -29,8 +29,6 @@ function changeCommitHelper(
             });
     }
 
-
-
     return {
         commitChanges,
         commitChangesOnApproval
