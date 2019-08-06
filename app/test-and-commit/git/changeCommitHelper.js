@@ -1,4 +1,5 @@
 function changeCommitHelper(
+    cliPrompts,
     commitActionFactory,
     commitMessageFactory,
     untrackedFileHelper
@@ -18,8 +19,21 @@ function changeCommitHelper(
         }
     }
 
+    function commitChangesOnApproval() {
+        cliPrompts
+            .verifyCommitOnSpecialCase()
+            .then(function (data) {
+                if (data.okToCommit) {
+                    commitChanges();
+                }
+            });
+    }
+
+
+
     return {
-        commitChanges
+        commitChanges,
+        commitChangesOnApproval
     };
 }
 

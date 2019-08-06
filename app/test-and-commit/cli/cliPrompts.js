@@ -1,4 +1,8 @@
-function cliPrompts(promptUser) {
+function cliPrompts(
+    inquirer,
+    promptUser
+) {
+
     function addFile(fileName, callback) {
         const message = `Stage file, "${fileName}"? (Y/n) `;
 
@@ -11,9 +15,22 @@ function cliPrompts(promptUser) {
         promptUser(message, callback);
     }
 
+    function verifyCommitOnSpecialCase() {
+        return inquirer
+            .prompt([
+                {
+                    name: 'okToCommit',
+                    message: 'Special test case run, do you want to commit?',
+                    type: 'confirm',
+                    default: false
+                }
+            ]);
+    }
+
     return {
-        addFile: addFile,
-        getCommitMessage: getCommitMessage
+        addFile,
+        getCommitMessage,
+        verifyCommitOnSpecialCase
     }
 }
 

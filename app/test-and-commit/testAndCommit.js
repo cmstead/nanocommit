@@ -1,33 +1,15 @@
 function testAndCommit(
     changeCommitHelper,
-    testRunner,
-    inquirer
+    testRunner
 ) {
-
-    function commitChangesOnApproval() {
-        inquirer
-            .prompt([
-                {
-                    name: 'okToCommit',
-                    message: 'Special test case run, do you want to commit?',
-                    type: 'confirm',
-                    default: false
-                }
-            ])
-            .then(function(data) {
-                if(data.okToCommit) {
-                    changeCommitHelper.commitChanges();
-                }
-            });
-    }
 
     return function (args) {
 
         try {
             testRunner.runTests(args);
 
-            if(args.length > 0) {
-                commitChangesOnApproval()
+            if(args && args.length > 0) {
+                changeCommitHelper.commitChangesOnApproval()
             } else {
                 changeCommitHelper.commitChanges();
             }
