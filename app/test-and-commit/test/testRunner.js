@@ -2,11 +2,10 @@ function testRunner (
     child_process,
     optionsReader
 ) {
-    const args = process.argv.slice(2);
     const childProcess = child_process;
     const options = optionsReader.readOptions()
 
-    function runTests() {
+    function runTests(args) {
         const baseCommand = options.testCommand;
         const testCommand = [baseCommand].concat(args).join(' ');
     

@@ -2,10 +2,10 @@ function testAndCommit(
     changeCommitHelper,
     testRunner,
 ) {
-    return function () {
+    return function (args) {
 
         try {
-            testRunner.runTests();
+            testRunner.runTests(args);
 
             changeCommitHelper.commitChanges();
         } catch (e) {

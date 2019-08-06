@@ -2,4 +2,4 @@
 
 require('./container')
     .build('app')
-    .testAndCommit();
+    .startApp();
