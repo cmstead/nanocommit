@@ -7,6 +7,7 @@ function commitAnnotationTypes() {
             'Bug Fix': '[Bug]',
             'Code Reorganization': '[Reorg]',
             'Comment (Add/Remove)': '[Comment]',
+            'Configuration': '[Config]',
             'Documentation': '[Doc]',
             'Feature': '[Feature]',
             'Formatting': '[Formatting]',
