@@ -39,6 +39,9 @@ function init(
             
             .then(prompts.defaultCommitMessage)
             .then(storeResult)
+
+            .then(prompts.commitAnnotations)
+            .then(storeResult)
             
             .then(() => prompts.conditionalDefaultCommitMessage(results))
             .then(storeResult)

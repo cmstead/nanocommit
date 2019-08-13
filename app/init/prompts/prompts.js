@@ -35,6 +35,11 @@ function prompts(
             .displayPrompt(initPrompts.useDefaultCommitMessage);
     }
 
+    function commitAnnotations() {
+        return prompt
+            .displayPrompt(initPrompts.useCommitAnnotations);
+    }
+
     function conditionalDefaultCommitMessage(results) {
         if (results.useDefaultCommitMessage === 'Yes') {
             return prompt
@@ -58,6 +63,7 @@ function prompts(
         conditionalTestOption,
 
         blindCommit,
+        commitAnnotations,
         defaultCommandArgs,
         defaultCommitMessage,
         installLocalInstance,

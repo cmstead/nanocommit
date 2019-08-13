@@ -13,7 +13,8 @@
         "testCommand": "node ./test-proxy.js",
         "defaultCommandArgs": null,
         "blindCommit": false,
-        "commitMessage": null
+        "commitMessage": null,
+        "annotations": "nanocommit"
     },
     "repository": {
         "type": "git",

@@ -71,6 +71,20 @@ function initPrompts() {
         }
     ];
 
+    const useCommitAnnotations = [
+        {
+            name: 'useCommitAnnotations',
+            message: 'What style of commit annotations would you like to use?',
+            type: 'list',
+            choices: [
+                'nanocommit',
+                'arlo',
+                'none'
+            ],
+            default: 'nanocommit'
+        }
+    ];
+
     return {
         blindCommit,
         defaultCommandArgs,
@@ -78,6 +92,7 @@ function initPrompts() {
         installLocalInstance,
         replaceTestCommand,
         writeNewTestCommand,
+        useCommitAnnotations,
         useDefaultCommitMessage,
         useExistingTest,
     };

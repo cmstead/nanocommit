@@ -27,8 +27,22 @@ function cliPrompts(
             ]);
     }
 
+    function getCommitAnnotation(annotationTypes) {
+        return inquirer
+            .prompt([
+                {
+                    name: 'commitAnnotation',
+                    message: 'What are you committing?',
+                    type: 'list',
+                    choices: Object.keys(annotationTypes),
+                    validate: (value) => value !== ''
+                }
+            ])
+    }
+
     return {
         addFile,
+        getCommitAnnotation,
         getCommitMessage,
         verifyCommitOnSpecialCase
     }

@@ -1,5 +1,6 @@
 function commitMessageFactory(
     cliPrompts,
+    commitAnnotationTypes,
     localDate,
     optionsReader
 ) {
@@ -12,6 +13,26 @@ function commitMessageFactory(
         callback(message);
     }
 
+    function getAnnotationOptions() {
+        const annotationKey = commitAnnotationTypes
+            .getAnnotationKey(options.annotations);
+
+        return commitAnnotationTypes
+            .getAnnotationOptions(annotationKey);
+    }
+
+    function getCommitAnnotation(callback) {
+        const annotationOptions = getAnnotationOptions();
+        cliPrompts
+            .getCommitAnnotation(annotationOptions)
+            .then(function (data) {
+                const selectedAnnotation = data.commitAnnotation;
+                const annotationString = annotationOptions[selectedAnnotation];
+
+                callback(annotationString + ' ');
+            });
+    };
+
     function getMessageFromUser(callback) {
         cliPrompts.getCommitMessage(function (message) {
             callback(message);
@@ -22,12 +43,27 @@ function commitMessageFactory(
         return typeof options.commitMessage === 'string';
     }
 
+    function prepareAnnotation(callback) {
+        if (options.annotations !== null) {
+            getCommitAnnotation(function (annotation) {
+                callback(annotation);
+            });
+        } else {
+            callback('');
+        }
+
+    }
+
     function getCommitMessage(callback) {
         const getMessageAction = hasDefaultMessage()
             ? getMessageFromOptions
             : getMessageFromUser;
 
-        getMessageAction(callback);
+        prepareAnnotation(function (annotation) {
+            getMessageAction(function (commitMessage) {
+                callback(annotation + commitMessage);
+            });
+        });
     }
 
     return {

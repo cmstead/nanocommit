@@ -27,6 +27,12 @@ function configBuilder () {
             config.commitMessage = null;
         }
 
+        if(initOptions.useCommitAnnotations.toLowerCase() !== 'none') {
+            config.annotations = initOptions.useCommitAnnotations;
+        } else {
+            config.annotations = null;
+        }
+
         return config;
     }
     
