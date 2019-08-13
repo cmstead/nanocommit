@@ -8,6 +8,8 @@ function testAndCommit(
         try {
             testRunner.runTests(args);
 
+            console.log('\n************ All tests passed, beginning commit! ************\n');
+
             if(args && args.length > 0) {
                 changeCommitHelper.commitChangesOnApproval()
             } else {
