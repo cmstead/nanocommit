@@ -1,6 +1,11 @@
-function commitAnnotationTypes() {
+function commitAnnotationTypes(
+    optionsReader
+) {
 
     const annotations = {};
+    const customAnnotations = optionsReader
+        .readOptions()
+        .customAnnotations;
 
     annotations[buildAnnotationKey('nanocommit')] =
         {
@@ -31,6 +36,10 @@ function commitAnnotationTypes() {
             'Does not compile intermediate step': '***'
         };
 
+
+    if(typeof customAnnotations === 'object' && customAnnotations !== null) {
+        annotations[buildAnnotationKey('custom')] = customAnnotations;
+    }
 
     function buildAnnotationKey(name) {
         return name + 'Prefixes';

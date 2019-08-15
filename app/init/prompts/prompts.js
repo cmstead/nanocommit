@@ -62,7 +62,54 @@ function prompts(
             .displayPrompt(initPrompts.defaultCommandArgs);
     }
 
+    function getCustomAnnotations() {
+        const customAnnotations = {};
+
+        function getNextAnnotation(resolve) {
+            let tempKey;
+
+            function getAnnotationKey() {
+                return prompt
+                    .displayPrompt(initPrompts.customAnnotationKey)
+            }
+
+            function getAnnotationValue() {
+                return prompt
+                    .displayPrompt(initPrompts.customAnnotationValue)
+            }
+
+            getAnnotationKey()
+                .then(({ annotationKey }) => {
+                    if (annotationKey !== '') {
+                        tempKey = annotationKey;
+                        return getAnnotationValue();
+                    }
+                })
+                .then(function (data) {
+                    if (data && data.annotationValue) {
+                        customAnnotations[tempKey] = data.annotationValue;
+                        getNextAnnotation(resolve);
+                    } else {
+                        resolve({ customAnnotations });
+                    }
+                });
+        }
+
+        return new Promise(getNextAnnotation);
+    }
+
+    function conditionalGetCustomAnnotations(options) {
+        return function () {
+            if (options.useCommitAnnotations === 'custom') {
+                return getCustomAnnotations();
+            } else {
+                return Promise.resolve({});
+            }
+        }
+    }
+
     return {
+        conditionalGetCustomAnnotations,
         conditionalDefaultCommitMessage,
         conditionalTestOption,
 
@@ -70,6 +117,7 @@ function prompts(
         commitAnnotations,
         defaultCommandArgs,
         defaultCommitMessage,
+        getCustomAnnotations,
         getTestCommand,
         installLocalInstance,
         replaceTestCommand,

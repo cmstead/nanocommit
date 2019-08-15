@@ -79,14 +79,33 @@ function initPrompts() {
             choices: [
                 'nanocommit',
                 'arlo',
+                'custom',
                 'none'
             ],
             default: 'nanocommit'
         }
     ];
 
+    const customAnnotationKey = [
+        {
+            name: 'annotationKey',
+            message: 'Annotation description: (leave blank to stop)',
+            type: 'input'
+        }
+    ];
+
+    const customAnnotationValue = [
+        {
+            name: 'annotationValue',
+            message: 'Commit message annotation: (leave blank to stop)',
+            type: 'input'
+        }
+    ];
+
     return {
         blindCommit,
+        customAnnotationKey,
+        customAnnotationValue,
         defaultCommandArgs,
         defaultCommitMessage,
         installLocalInstance,

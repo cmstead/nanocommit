@@ -48,6 +48,9 @@ function init(
             .then(prompts.commitAnnotations)
             .then(storeResult)
 
+            .then(prompts.conditionalGetCustomAnnotations(results))
+            .then(storeResult)
+
             .then(() => packageSetup.doSetup(results))
             .catch((error) => console.log('Unable to complete setup', error));
     }
@@ -74,6 +77,9 @@ function init(
             .then(storeResult)
 
             .then(prompts.commitAnnotations)
+            .then(storeResult)
+
+            .then(prompts.conditionalGetCustomAnnotations(results))
             .then(storeResult)
 
             .then(() => configJsonSetup.doSetup(results))

@@ -37,12 +37,8 @@ function optionsReader(
         }
     }
 
-    function getUserOptions() {
-        return loadUserOptions();
-    }
-
     function readOptions() {
-        const options = getUserOptions();
+        const options = loadUserOptions();
 
         return mergeOptions(options, defaultOptions);
     }

@@ -33,6 +33,10 @@ function configBuilder () {
             config.annotations = null;
         }
 
+        if(initOptions.useCommitAnnotations.toLowerCase() === 'custom') {
+            config.customAnnotations = initOptions.customAnnotations;
+        }
+
         return config;
     }
     
