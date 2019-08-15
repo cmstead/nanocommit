@@ -4,7 +4,7 @@ function configBuilder () {
         return option === 'Yes';
     }
 
-    function buildNanocommitConfig(initOptions, packageFile) {
+    function buildConfig(initOptions, packageFile) {
         const config = {};
 
         if(isYes(initOptions.useExistingTestCommand)) {
@@ -36,24 +36,6 @@ function configBuilder () {
         return config;
     }
     
-    function updatePackageFile(initOptions, config, packageFile) {
-        if(isYes(initOptions.replaceNpmTest) && isYes(initOptions.installLocalInstance)) {
-            packageFile.scripts.test = 'node ./node_modules/nanocommit/';
-        } else if(isYes(initOptions.replaceNpmTest)) {
-            packageFile.scripts.test = 'nanocommit';
-        }
-
-        packageFile.nanocommit = config;
-
-        return packageFile;
-    }
-
-    function buildConfig(initOptions, packageFile) {
-        const config = buildNanocommitConfig(initOptions, packageFile);
-
-        return updatePackageFile(initOptions, config, packageFile);
-    }
-
     return {
         buildConfig
     };

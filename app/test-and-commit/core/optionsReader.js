@@ -1,6 +1,7 @@
 function optionsReader(
-    path,
-    defaultOptions
+    defaultOptions,
+    packageTools,
+    configJsonTools
 ) {
     function valueOrDefault(value, defaultValue) {
         return typeof value !== 'undefined'
@@ -20,12 +21,24 @@ function optionsReader(
         return destination;
     }
 
+    function getPackageFile() {
+        try{
+            return packageTools.loadPackageFile();
+        } catch (e) {
+            return {};
+        }
+    }
+
+    function loadUserOptions() {
+        if(packageTools.doesPackageFileExist()) {
+            return getPackageFile().nanocommit;
+        } else {
+            return configJsonTools.loadConfigFile();
+        }
+    }
+
     function getUserOptions() {
-        const packagePath = path.join(process.cwd(), 'package.json');
-        const packageFile = require(packagePath);
-        return typeof packageFile.nanocommit === 'object'
-            ? packageFile.nanocommit
-            : {};
+        return loadUserOptions();
     }
 
     function readOptions() {

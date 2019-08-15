@@ -19,7 +19,19 @@ function packageTools (
         fs.writeFileSync(packageLocation, packageContent);
     }
 
+    function doesPackageFileExist() {
+        try{
+            fs.lstatSync(packageLocation);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
     return {
+        packageLocation,
+        
+        doesPackageFileExist,
         loadPackageFile,
         writePackageFile
     };

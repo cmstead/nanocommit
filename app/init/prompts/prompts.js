@@ -13,9 +13,13 @@ function prompts(
             .displayPrompt(initPrompts.useExistingTest)
     }
 
+    function getTestCommand() {
+        return prompt.displayPrompt(initPrompts.writeNewTestCommand);
+    }
+
     function conditionalTestOption(results) {
         if (results.useExistingTestCommand === 'No') {
-            return prompt.displayPrompt(initPrompts.writeNewTestCommand);
+            return getTestCommand();
         } else {
             return Promise.resolve({});
         }
@@ -66,6 +70,7 @@ function prompts(
         commitAnnotations,
         defaultCommandArgs,
         defaultCommitMessage,
+        getTestCommand,
         installLocalInstance,
         replaceTestCommand,
         useExistingTest
