@@ -7,10 +7,12 @@
         "nanocommit": "index.js"
     },
     "scripts": {
-        "test": "nanocommit"
+        "test": "nanocommit",
+        "test-and-build": "node ./test-proxy.js && npm run build-readme",
+        "build-readme": "node ./node_modules/booklisp/ ./readme-source/readme.md ./README.md"
     },
     "nanocommit": {
-        "testCommand": "node ./test-proxy.js",
+        "testCommand": "npm run test-and-build",
         "defaultCommandArgs": null,
         "blindCommit": false,
         "commitMessage": null,
@@ -38,5 +40,8 @@
         "command-line-args": "^5.1.1",
         "dject": "^1.14.2",
         "inquirer": "^6.5.0"
+    },
+    "devDependencies": {
+        "booklisp": "^2.0.0"
     }
 }

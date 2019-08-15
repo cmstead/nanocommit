@@ -1,12 +1,25 @@
+
+<!-- GENERATED DOCUMENT! DO NOT EDIT! -->
 # nanocommit #
+
+
+## Table Of Contents ##
+
+- [Section 1: Why nanocommit?](#user-content-why-nanocommit?)
+- [Section 2: Setting Up nanocommit](#user-content-setting-up-nanocommit)
+- [Section 3: Running Nanocommit](#user-content-running-nanocommit)
+
+## Why nanocommit? ##
 
 Nanocommit (properly, "nanocommit") is a tool which will commit your code for you when your tests pass.  This means you can work all day and, each time you run your commits, your work will be saved! (That's all it does.)
 
 Currently, nanocommit is aimed at Node and Javascript packages which contain a package.json file.  If there is enough demand, I will extend functionality.
+    
 
-## Setup ##
+## Setting Up nanocommit ##
 
-### Installation ###
+
+#### Installation ####
 
 Easiest setup: For one-time menu-driven package-level installation, run the following command:
 
@@ -28,8 +41,9 @@ Or you can install it locally to a package:
 ```
 npm install nanocommit --save-dev
 ```
+    
 
-### Configuration ###
+#### Configuration ####
 
 **Note**
 
@@ -72,8 +86,11 @@ This is a configuration with nanocommit installed locally:
     }
 }
 ```
+    
 
-There are currently three options for configuration:
+#### Configuration Options ####
+
+There are currently five options for configuration:
 
 - **testCommit** -- The testCommit option defaults to `npm test` but will accept any terminal command you might use to run your tests.
 
@@ -84,8 +101,10 @@ There are currently three options for configuration:
 - **commitMessage** -- The commitMessage default is `null`, requiring the user to enter a commit message. If a commit message is specified, nanocommit will not prompt for a commit message, instead using the message specified, appended with a date/time stamp.
 
 - **annotations** -- There are two options for automated commit message annotations: nanocommit and arlo.  Nanocommit annotations are in brackets and contain common words or abbreviations, e.g. `[doc]` for documentation.  Arlo style annotations reflect Arlo Belshee's annotation list, found in his github repo: https://github.com/arlobelshee/ArlosCommitNotation
+    
+    
 
-## Running nanocommit ##
+## Running Nanocommit ##
 
 It is possible to run nanocommit in a couple different ways: locally and as a global script.
 
@@ -102,3 +121,7 @@ nanocommit
 ```
 
 That's it!
+    
+
+<!-- GENERATED DOCUMENT! DO NOT EDIT! -->
+    
