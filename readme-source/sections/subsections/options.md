@@ -4,6 +4,36 @@
     )
 /bl-->
 
+Below is an example of a nanocommit configuration in the package.json file. This will generally be generated, but can be edited by hand.
+
+
+```json
+{
+    ...
+    "nanocommit": {
+        "testCommand": "mocha ./spec/**/*.spec.js",
+        "defaultCommandArgs": null,
+        "blindCommit": true,
+        "commitMessage": "All tests passed",
+        "annotations": null
+    }
+    ...
+}
+```
+
+The following is a stand-alone nanocommit config (.nanocommit.config.json). This will only be read if there is no package.json file in your project. The standalone configuration is ideal for non-javascript projects.
+
+```json
+{
+    "testCommand": "mocha ./spec/**/*.spec.js",
+    "defaultCommandArgs": null,
+    "blindCommit": true,
+    "commitMessage": "All tests passed",
+    "annotations": null
+}
+```
+
+
 There are currently five options for configuration:
 
 - **testCommit** -- The testCommit option defaults to `npm test` but will accept any terminal command you might use to run your tests.

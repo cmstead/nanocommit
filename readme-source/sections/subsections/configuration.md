@@ -6,42 +6,16 @@
 
 **Note**
 
-You can skip this if you used the `nanocommit --init` setup method
+If you ran `npx nanocommit --init` and chose to install nanocommit locally, you don't need to do any other configuration.
 
 **Everyone else:**
 
-Out of the box, nanocommit will run `npm test` when you call it.  If that is all you want, you're done.  If you want to reconfigure things a bit, you can configure nanocommit in your package.json file:
+If you installed nanocommit globally, run the following command and follow the prompts:
 
-This is a configuration with nanocommit installed globally:
-
-```json
-{
-    "scripts": {
-        "test": "nanocommit"
-    },
-    "nanocommit": {
-        "testCommand": "mocha ./spec/**/*.spec.js",
-        "defaultCommandArgs": null,
-        "blindCommit": true,
-        "commitMessage": "All tests passed",
-        "annotations": null
-    }
-}
+```
+nanocommit --init
 ```
 
-This is a configuration with nanocommit installed locally:
+**Configuration By Hand**
 
-```json
-{
-    "scripts": {
-        "test": "node ./node_modules/nanocommit/"
-    },
-    "nanocommit": {
-        "testCommand": "mocha ./spec/**/*.spec.js",
-        "defaultCommandArgs": null,
-        "blindCommit": true,
-        "commitMessage": "All tests passed",
-        "annotations": null
-    }
-}
-```
+This is not recommended. Please use --init unless you really, really know what you intend to do.
