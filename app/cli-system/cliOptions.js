@@ -8,6 +8,11 @@ function cliOptions() {
         {
             name: 'init',
             type: Boolean
+        },
+        {
+            name: 'commit-only',
+            alias: 'c',
+            type: Boolean
         }
     ]
 }

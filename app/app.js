@@ -1,5 +1,6 @@
 function app(
     commandArgsParser,
+    commitOnly,
     help,
     init,
     testAndCommit
@@ -9,12 +10,15 @@ function app(
         const commandArgs = commandArgsParser.parseCommandArgs();
         const isInitCommand = Boolean(commandArgs.init);
         const isHelpCommand = Boolean(commandArgs.help);
+        const isCommitCommand = Boolean(commandArgs['commit-only']);
         const argValues = commandArgs._unknown;
 
-        if(isHelpCommand) {
+        if (isHelpCommand) {
             help();
-        } else if(isInitCommand) {
+        } else if (isInitCommand) {
             init();
+        } else if (isCommitCommand) {
+            commitOnly()
         } else {
             testAndCommit(argValues);
         }
