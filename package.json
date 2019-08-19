@@ -7,6 +7,8 @@
         "nanocommit": "index.js"
     },
     "scripts": {
+        "build-minor": "npm test && npm version minor",
+        "build-patch": "npm test && npm version patch",
         "test": "nanocommit",
         "test-and-build": "node ./test-proxy.js && npm run build-readme",
         "build-readme": "node ./node_modules/booklisp/ ./readme-source/readme.md ./README.md"
