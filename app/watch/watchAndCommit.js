@@ -26,17 +26,6 @@ function watchAndCommit(
 
         function testRunner () {
             runTestsAndCommit();
-            // if(running) {
-            //     pending = true;
-            // } else {
-            //     pending = false;
-            //     running = true;
-
-
-            //     if(pending) {
-            //         testRunner();
-            //     }
-            // }
         }
 
         return testRunner;
