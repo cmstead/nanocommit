@@ -28,8 +28,6 @@ function testRunner(
         const options = configStore.getConfig();
         const testCommand = buildTestCommand(args, options);
 
-        console.log('Running tests: ' + testCommand);
-
         childProcess.execSync(testCommand, { stdio: 'inherit' });
     }
 
