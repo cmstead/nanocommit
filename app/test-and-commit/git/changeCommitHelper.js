@@ -30,6 +30,7 @@ function changeCommitHelper(
     }
 
     return {
+        changesExistToCommit,
         commitChanges,
         commitChangesOnApproval
     };
