@@ -31,7 +31,10 @@ function watchAndCommit(
         console.log('Starting watcher');
         const watcher = chokidar.watch(options.watchFiles);
 
-        watcher.on('all', debouncedTestRunner(commitMessage));
+        watcher
+            .on('add', debouncedTestRunner(commitMessage))
+            .on('change', debouncedTestRunner(commitMessage))
+            .on('delete', debouncedTestRunner(commitMessage));
     }
 
     return function startWatcher() {
