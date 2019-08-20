@@ -5,6 +5,7 @@ function help () {
         console.log('Help documents are in development.');
 
         console.log('\n-- Commit Without Test Run: To commit code without a test run, use `nanocommit --commit-only`');
+        console.log('\n-- Watch Files And Autocommit: To watch files, test and commit, use `nanocommit --watch`');
         console.log('\n-- Setup: To set up nanocommit in your project, run `nanocommit --init`');
         console.log('-- Run Tests: To run tests, simply run `nanocommit`\n');
     }
