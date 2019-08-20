@@ -8,6 +8,8 @@ function testAndCommit(
         try {
             testRunner.runTests(args);
 
+            console.log(changeCommitHelper.changesExistToCommit());
+
             if(changeCommitHelper.changesExistToCommit()) {
                 console.log('\n************ All tests passed, beginning commit! ************\n');
             } else {

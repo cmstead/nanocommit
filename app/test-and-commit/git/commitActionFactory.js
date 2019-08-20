@@ -47,6 +47,8 @@ function commitActionFactory(
     function getCommitAction() {
         const options = configStore.getConfig();
 
+        console.log('is this blind commit??', options);
+
         return options.blindCommit
             ? blindCommit
             : selectiveCommit;

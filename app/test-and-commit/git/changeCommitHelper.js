@@ -4,15 +4,17 @@ function changeCommitHelper(
     commitMessageFactory,
     untrackedFileHelper
 ) {
-    const commitAction = commitActionFactory.getCommitAction();
-    const shortStatusTokens = untrackedFileHelper.getShortStatusTokens();
 
     function changesExistToCommit() {
+        const shortStatusTokens = untrackedFileHelper.getShortStatusTokens();
+
         return shortStatusTokens.length > 0
             && Boolean(shortStatusTokens[0]);
     }
 
     function commitChanges() {
+        const commitAction = commitActionFactory.getCommitAction();
+
         if (changesExistToCommit()) {
             commitMessageFactory
                 .getCommitMessage(commitAction);

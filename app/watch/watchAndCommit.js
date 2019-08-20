@@ -31,8 +31,6 @@ function watchAndCommit(
         console.log('Starting watcher');
         const watcher = chokidar.watch(options.watchFiles);
 
-        // debouncedTestRunner(commitMessage)();
-
         watcher.on('all', debouncedTestRunner(commitMessage));
     }
 
