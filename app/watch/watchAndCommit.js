@@ -39,8 +39,7 @@ function watchAndCommit(
         testRunner();
 
         watcher
-            .on('change', testRunner)
-            .on('unlink', testRunner);
+            .on('change', testRunner);
     }
 
     return function startWatcher() {
