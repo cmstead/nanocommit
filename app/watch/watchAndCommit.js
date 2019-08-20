@@ -25,18 +25,18 @@ function watchAndCommit(
         configStore.setConfig(options);
 
         function testRunner () {
-            if(running) {
-                pending = true;
-            } else {
-                pending = false;
-                running = true;
+            runTestsAndCommit();
+            // if(running) {
+            //     pending = true;
+            // } else {
+            //     pending = false;
+            //     running = true;
 
-                testAndCommit();
 
-                if(pending) {
-                    testRunner();
-                }
-            }
+            //     if(pending) {
+            //         testRunner();
+            //     }
+            // }
         }
 
         return testRunner;
