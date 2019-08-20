@@ -15,8 +15,6 @@ function watchAndCommit(
 
     function debouncedTestRunner(commitMessage) {
         let options = configStore.getConfig();
-        let pending = false;
-        let running = false;
 
         options.blindCommit = true;
         options.commitMessage = commitMessage;
