@@ -38,8 +38,7 @@ function watchAndCommit(
 
         testRunner();
 
-        watcher
-            .on('change', testRunner);
+        watcher.on('change', testRunner);
     }
 
     return function startWatcher() {
