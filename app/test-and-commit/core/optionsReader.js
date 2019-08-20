@@ -44,7 +44,8 @@ function optionsReader(
     }
 
     return {
-        readOptions
+        readOptions,
+        mergeOptions
     };
 }
 

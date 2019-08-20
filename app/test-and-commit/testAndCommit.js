@@ -16,7 +16,7 @@ function testAndCommit(
                 changeCommitHelper.commitChanges();
             }
         } catch (e) {
-            console.log('Tests failed, skipping commit.');
+            console.log('Tests failed, skipping commit.', e);
 
             process.exit(1);
         }

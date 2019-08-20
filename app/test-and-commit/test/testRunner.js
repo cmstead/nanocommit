@@ -3,26 +3,39 @@ function testRunner(
     optionsReader
 ) {
     const childProcess = child_process;
-    const options = optionsReader.readOptions()
 
-    function getDefaultArgs() {
+    function getDefaultArgs(options) {
         return Boolean(options.defaultCommandArgs)
             ? options.defaultCommandArgs
             : [];
     }
 
-    function getCommandArgs(args) {
+    function getCommandArgs(args, options) {
         const argsWereProvided = Boolean(args) && args.length > 0;
 
         return !argsWereProvided
-            ? getDefaultArgs()
+            ? getDefaultArgs(options)
             : args;
     }
 
-    function runTests(args) {
+    function buildTestCommand(args, options) {
         const baseCommand = options.testCommand;
-        const commandArgs = getCommandArgs(args);
-        const testCommand = [baseCommand].concat(commandArgs).join(' ');
+        const commandArgs = getCommandArgs(args, options);
+        return [baseCommand].concat(commandArgs).join(' ');
+    }
+
+    function optionsOrDefault(alternateOptions) {
+        const userOptions = optionsReader.readOptions();
+
+        return alternateOptions === null
+            ? userOptions
+            : optionsReader
+                .mergeOptions(alternateOptions, userOptions);
+    }
+
+    function runTests(args, alternateOptions = null) {
+        const options = optionsOrDefault(alternateOptions);
+        const testCommand = buildTestCommand(args, options);
 
         console.log('Running tests: ' + testCommand);
 
