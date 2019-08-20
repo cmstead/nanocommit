@@ -22,8 +22,9 @@ function watchAndCommit(
 
         configStore.setConfig(options);
 
-        return function () {
+        return function (path) {
             console.log(`------------------- ${eventName} --------------------`);
+            console.log('===========================', path);
             runTestsAndCommit();
         }
     }
