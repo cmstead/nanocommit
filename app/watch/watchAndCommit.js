@@ -27,9 +27,14 @@ function watchAndCommit(
         }
     }
 
+    function buildCommitMessage(commitMessage) {
+        return `[Autocommit][WIP] ${commitMessage}`;
+    }
+
     function watchFiles(options, commitMessage) {
         const watcher = chokidar.watch(options.watchFiles);
-        const testRunner = debouncedTestRunner(commitMessage);
+        const fullCommitMessage = buildCommitMessage(commitMessage);
+        const testRunner = debouncedTestRunner(fullCommitMessage);
 
         testRunner();
 
