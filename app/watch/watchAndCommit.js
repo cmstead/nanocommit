@@ -24,9 +24,14 @@ function watchAndCommit(
 
         configStore.setConfig(options);
 
-        return function () {
-            runTestsAndCommit();
+        function testRunner () {
+            if(running) {
+                pending = true;
+            } else {
+            }
         }
+
+        return testRunner;
     }
 
     function buildCommitMessage(commitMessage) {
