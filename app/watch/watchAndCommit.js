@@ -28,6 +28,10 @@ function watchAndCommit(
             if(running) {
                 pending = true;
             } else {
+                pending = false;
+                running = true;
+                
+                testAndCommit();
             }
         }
 
