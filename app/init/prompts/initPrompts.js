@@ -102,6 +102,14 @@ function initPrompts() {
         }
     ];
 
+    const watchPath = [
+        {
+            name: 'watchPath',
+            message: 'Which files would you like to watch? (glob okay, leave empty to exit)',
+            type: 'input'
+        }
+    ];
+
     return {
         blindCommit,
         customAnnotationKey,
@@ -110,6 +118,7 @@ function initPrompts() {
         defaultCommitMessage,
         installLocalInstance,
         replaceTestCommand,
+        watchPath,
         writeNewTestCommand,
         useCommitAnnotations,
         useDefaultCommitMessage,

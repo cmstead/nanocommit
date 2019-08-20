@@ -98,6 +98,27 @@ function prompts(
         return new Promise(getNextAnnotation);
     }
 
+    function getWatchPaths() {
+        let watchPaths = [];
+
+        console.log('Nanocommit has a watch option, but it needs files configured to run the file watcher.');
+
+        function getNextWatchPath(resolve) {
+            prompt
+                .displayPrompt(initPrompts.watchPath)
+                .then(function(data) {
+                    if(data.watchPath.trim() === ''){
+                        resolve({ watchPaths });
+                    } else {
+                        watchPaths.push(data.watchPath);
+                        getNextWatchPath(resolve);
+                    }
+                });
+        }
+
+        return new Promise(getNextWatchPath);
+    }
+
     function conditionalGetCustomAnnotations(options) {
         return function () {
             if (options.useCommitAnnotations === 'custom') {
@@ -119,6 +140,7 @@ function prompts(
         defaultCommitMessage,
         getCustomAnnotations,
         getTestCommand,
+        getWatchPaths,
         installLocalInstance,
         replaceTestCommand,
         useExistingTest

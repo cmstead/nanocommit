@@ -13,6 +13,10 @@ function cliOptions() {
             name: 'commit-only',
             alias: 'c',
             type: Boolean
+        },
+        {
+            name: 'watch',
+            type: Boolean
         }
     ]
 }

@@ -12,6 +12,8 @@ function configBuilder (
 
         if(isYes(initOptions.useExistingTestCommand)) {
             config.testCommand = packageFile.scripts.test;
+        } else {
+            config.testCommand = initOptions.newTestCommand;
         }
 
         if(isYes(initOptions.defaultCommandArgs)) {
@@ -31,6 +33,8 @@ function configBuilder (
         if(initOptions.useCommitAnnotations.toLowerCase() === 'custom') {
             config.customAnnotations = initOptions.customAnnotations;
         }
+
+        config.watchFiles = initOptions.watchPaths;
 
         return optionsUtils.mergeOptions(config, defaultConfig);
     }

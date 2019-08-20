@@ -15,10 +15,14 @@
     },
     "nanocommit": {
         "testCommand": "npm run test-and-build",
-        "defaultCommandArgs": null,
         "blindCommit": false,
+        "annotations": "nanocommit",
+        "watchFiles": [
+            "./app/**/*.js"
+        ],
+        "defaultCommandArgs": null,
         "commitMessage": null,
-        "annotations": "nanocommit"
+        "customAnnotations": null
     },
     "repository": {
         "type": "git",
