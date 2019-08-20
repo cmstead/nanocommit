@@ -13,7 +13,7 @@ function watchAndCommit(
         }
     }
 
-    function debouncedTestRunner(commitMessage, eventName) {
+    function debouncedTestRunner(commitMessage) {
         let options = configStore.getConfig();
 
         options.blindCommit = true;
@@ -22,22 +22,20 @@ function watchAndCommit(
 
         configStore.setConfig(options);
 
-        return function (path, stats) {
-            console.log(`------------------- ${eventName} --------------------`);
-            console.log('===========================', path);
-            console.log('===========================', stats);
+        return function () {
             runTestsAndCommit();
         }
     }
 
     function watchFiles(options, commitMessage) {
-        console.log('Starting watcher');
         const watcher = chokidar.watch(options.watchFiles);
+        const testRunner = debouncedTestRunner(commitMessage);
+
+        testRunner();
 
         watcher
-            .on('add', debouncedTestRunner(commitMessage, 'add'))
-            .on('change', debouncedTestRunner(commitMessage, 'change'))
-            .on('unlink', debouncedTestRunner(commitMessage, 'delete'));
+            .on('change', testRunner)
+            .on('unlink', testRunner);
     }
 
     return function startWatcher() {
