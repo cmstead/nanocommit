@@ -22,11 +22,7 @@ function watchAndCommit(
 
         configStore.setConfig(options);
 
-        function testRunner () {
-            runTestsAndCommit();
-        }
-
-        return testRunner;
+        return runTestsAndCommit;
     }
 
     function buildCommitMessage(commitMessage) {
