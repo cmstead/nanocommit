@@ -22,9 +22,10 @@ function watchAndCommit(
 
         configStore.setConfig(options);
 
-        return function (path) {
+        return function (path, stats) {
             console.log(`------------------- ${eventName} --------------------`);
             console.log('===========================', path);
+            console.log('===========================', stats);
             runTestsAndCommit();
         }
     }
@@ -36,7 +37,7 @@ function watchAndCommit(
         watcher
             .on('add', debouncedTestRunner(commitMessage, 'add'))
             .on('change', debouncedTestRunner(commitMessage, 'change'))
-            .on('delete', debouncedTestRunner(commitMessage, 'delete'));
+            .on('unlink', debouncedTestRunner(commitMessage, 'delete'));
     }
 
     return function startWatcher() {
