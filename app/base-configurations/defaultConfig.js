@@ -5,8 +5,8 @@ function defaultConfig () {
         blindCommit: false,
         commitMessage: null,
         annotations: null,
-        customAnnotations: [],
-        watchFiles: []
+        customAnnotations: null,
+        watchFiles: null
     };
 }
 

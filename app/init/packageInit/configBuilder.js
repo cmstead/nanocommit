@@ -1,6 +1,6 @@
 function configBuilder (
     defaultConfig,
-    optionsReader
+    optionsUtils
 ) {
 
     function isYes(option) {
@@ -32,7 +32,7 @@ function configBuilder (
             config.customAnnotations = initOptions.customAnnotations;
         }
 
-        return optionsReader.mergeOptions(config, defaultConfig);
+        return optionsUtils.mergeOptions(config, defaultConfig);
     }
     
     return {

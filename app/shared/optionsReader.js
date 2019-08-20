@@ -1,26 +1,9 @@
 function optionsReader(
     defaultOptions,
     packageTools,
-    configJsonTools
+    configJsonTools,
+    optionsUtils
 ) {
-    function valueOrDefault(value, defaultValue) {
-        return typeof value !== 'undefined'
-            ? value
-            : defaultValue;
-    }
-
-    function mergeOptions(destination, source) {
-        Object.keys(source)
-            .forEach(function (key) {
-                destination[key] = valueOrDefault(
-                    destination[key],
-                    source[key]
-                )
-            });
-
-        return destination;
-    }
-
     function getPackageFile() {
         try{
             return packageTools.loadPackageFile();
@@ -40,12 +23,12 @@ function optionsReader(
     function readOptions() {
         const options = loadUserOptions();
 
-        return mergeOptions(options, defaultOptions);
+        return optionsUtils.mergeOptions(options, defaultOptions);
     }
 
     return {
         readOptions,
-        mergeOptions
+        mergeOptions: optionsUtils.mergeOptions
     };
 }
 

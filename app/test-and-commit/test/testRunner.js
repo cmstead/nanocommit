@@ -1,6 +1,6 @@
 function testRunner(
     child_process,
-    optionsReader
+    configStore
 ) {
     const childProcess = child_process;
 
@@ -24,17 +24,8 @@ function testRunner(
         return [baseCommand].concat(commandArgs).join(' ');
     }
 
-    function optionsOrDefault(alternateOptions) {
-        const userOptions = optionsReader.readOptions();
-
-        return alternateOptions === null
-            ? userOptions
-            : optionsReader
-                .mergeOptions(alternateOptions, userOptions);
-    }
-
-    function runTests(args, alternateOptions = null) {
-        const options = optionsOrDefault(alternateOptions);
+    function runTests(args) {
+        const options = configStore.getConfig();
         const testCommand = buildTestCommand(args, options);
 
         console.log('Running tests: ' + testCommand);

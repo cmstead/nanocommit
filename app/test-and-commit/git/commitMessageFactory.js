@@ -1,19 +1,17 @@
 function commitMessageFactory(
     cliPrompts,
+    configStore,
     commitAnnotationTypes,
-    localDate,
-    optionsReader
+    localDate
 ) {
-    const options = optionsReader.readOptions();
-
-    function getMessageFromOptions(callback) {
+    function getMessageFromOptions(options, callback) {
         const message = options.commitMessage
             + ' ' + localDate.getLocalDate();
 
         callback(message);
     }
 
-    function getAnnotationOptions() {
+    function getAnnotationOptions(options) {
         const annotationKey = commitAnnotationTypes
             .getAnnotationKey(options.annotations);
 
@@ -21,8 +19,8 @@ function commitMessageFactory(
             .getAnnotationOptions(annotationKey);
     }
 
-    function getCommitAnnotation(callback) {
-        const annotationOptions = getAnnotationOptions();
+    function getCommitAnnotation(options, callback) {
+        const annotationOptions = getAnnotationOptions(options);
         cliPrompts
             .getCommitAnnotation(annotationOptions)
             .then(function (data) {
@@ -33,19 +31,19 @@ function commitMessageFactory(
             });
     };
 
-    function getMessageFromUser(callback) {
+    function getMessageFromUser(options, callback) {
         cliPrompts.getCommitMessage(function (message) {
             callback(message);
         });
     }
 
-    function hasDefaultMessage() {
+    function hasDefaultMessage(options) {
         return typeof options.commitMessage === 'string';
     }
 
-    function prepareAnnotation(callback) {
+    function prepareAnnotation(options, callback) {
         if (options.annotations !== null) {
-            getCommitAnnotation(function (annotation) {
+            getCommitAnnotation(options, function (annotation) {
                 callback(annotation);
             });
         } else {
@@ -55,12 +53,14 @@ function commitMessageFactory(
     }
 
     function getCommitMessage(callback) {
-        const getMessageAction = hasDefaultMessage()
+        const options = configStore.getConfig();
+
+        const getMessageAction = hasDefaultMessage(options)
             ? getMessageFromOptions
             : getMessageFromUser;
 
-        prepareAnnotation(function (annotation) {
-            getMessageAction(function (commitMessage) {
+        prepareAnnotation(options, function (annotation) {
+            getMessageAction(options, function (commitMessage) {
                 callback(annotation + commitMessage);
             });
         });

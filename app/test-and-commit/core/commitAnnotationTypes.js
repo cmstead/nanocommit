@@ -1,10 +1,10 @@
 function commitAnnotationTypes(
-    optionsReader
+    configStore
 ) {
 
     const annotations = {};
-    const customAnnotations = optionsReader
-        .readOptions()
+    const customAnnotations = configStore
+        .getConfig()
         .customAnnotations;
 
     annotations[buildAnnotationKey('nanocommit')] =

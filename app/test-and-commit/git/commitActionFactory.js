@@ -1,11 +1,9 @@
 function commitActionFactory(
     cliPrompts,
+    configStore,
     gitCommands,
-    optionsReader,
     untrackedFileHelper
 ) {
-    const options = optionsReader.readOptions();
-
     function promptForFileAdd(untrackedFiles, callback) {
         const currentFile = untrackedFiles.shift();
 
@@ -47,6 +45,8 @@ function commitActionFactory(
     }
 
     function getCommitAction() {
+        const options = configStore.getConfig();
+
         return options.blindCommit
             ? blindCommit
             : selectiveCommit;
