@@ -9,11 +9,12 @@ function app(
 
     function startApp() {
         const commandArgs = commandArgsParser.parseCommandArgs();
+        const argValues = commandArgs._unknown;
+
         const isInitCommand = Boolean(commandArgs.init);
         const isHelpCommand = Boolean(commandArgs.help);
         const isCommitCommand = Boolean(commandArgs['commit-only']);
         const isWatchCommand = Boolean(commandArgs['watch']);
-        const argValues = commandArgs._unknown;
 
         if (isHelpCommand) {
             help();
