@@ -21,7 +21,13 @@ function optionsReader(
     }
 
     function readOptions() {
-        const options = loadUserOptions();
+        let options;
+        
+        try{
+            options = loadUserOptions();
+        } catch (e) {
+            options = {};
+        }
 
         return optionsUtils.mergeOptions(options, defaultOptions);
     }

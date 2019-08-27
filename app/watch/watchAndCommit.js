@@ -34,7 +34,11 @@ function watchAndCommit(
         const fullCommitMessage = buildCommitMessage(commitMessage);
         const testRunner = debouncedTestRunner(fullCommitMessage);
 
-        testRunner();
+        try {
+            testRunner();
+        } catch (e) {
+            console.log('[nanocommit] A test failed, rerunning on next change.');
+        }
 
         watcher.on('change', testRunner);
     }
