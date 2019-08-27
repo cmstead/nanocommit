@@ -20,7 +20,8 @@ function testAndCommit(
                 changeCommitHelper.commitChanges();
             }
         } catch (e) {
-            console.log('Tests failed, skipping commit.', e);
+            console.log('[nanocommit] Tests failed, skipping commit.');
+            console.log('[nanocommit] Error message: ', e.message);
 
             process.exit(1);
         }
