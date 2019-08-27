@@ -15,6 +15,11 @@ function cliOptions() {
             type: Boolean
         },
         {
+            name: 'version',
+            alias: 'v',
+            type: Boolean
+        },
+        {
             name: 'watch',
             type: Boolean
         }

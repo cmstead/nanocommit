@@ -4,6 +4,7 @@ function app(
     help,
     init,
     testAndCommit,
+    version,
     watchAndCommit
 ) {
 
@@ -14,6 +15,7 @@ function app(
         const isInitCommand = Boolean(commandArgs.init);
         const isHelpCommand = Boolean(commandArgs.help);
         const isCommitCommand = Boolean(commandArgs['commit-only']);
+        const isVersionCommand = Boolean(commandArgs['version']);
         const isWatchCommand = Boolean(commandArgs['watch']);
 
         if (isHelpCommand) {
@@ -22,6 +24,8 @@ function app(
             init();
         } else if (isCommitCommand) {
             commitOnly();
+        }else if(isVersionCommand) {
+            version();
         }else if(isWatchCommand) {
             watchAndCommit();
         } else {
