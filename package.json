@@ -1,6 +1,6 @@
 {
     "name": "nanocommit",
-    "version": "1.9.1",
+    "version": "1.9.2",
     "description": "Commit every time your tests pass, no fuss, no muss",
     "main": "index.js",
     "bin": {
