@@ -18,8 +18,14 @@ function testRunner(
             : args;
     }
 
+    function getTestCommand(options){
+        return options !== null && typeof options === 'object'
+            ? options.testCommand
+            : '';
+    }
+
     function buildTestCommand(args, options) {
-        const baseCommand = options.testCommand;
+        const baseCommand = getTestCommand(options);
         const commandArgs = getCommandArgs(args, options);
         return [baseCommand].concat(commandArgs).join(' ');
     }
