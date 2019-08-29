@@ -12,9 +12,16 @@ function optionsReader(
         }
     }
 
+    function getNanocommitOptions (packageFile) {
+        return typeof packageFile.nanocommit === 'object'
+            && packagefile.nanocommit !== null
+            ? packagefile.nanocommit
+            : {};
+    }
+
     function loadUserOptions() {
         if(packageTools.doesPackageFileExist()) {
-            return getPackageFile().nanocommit;
+            return getNanocommitOptions(getPackageFile());
         } else {
             return configJsonTools.loadConfigFile();
         }
