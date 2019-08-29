@@ -9,7 +9,7 @@
     "scripts": {
         "build-minor": "npm test && npm version minor",
         "build-patch": "npm test && npm version patch",
-        "test": "npm run test-and-build",
+        "test": "node ./index.js",
         "test-and-build": "node ./test-proxy.js && npm run build-readme",
         "build-readme": "node ./node_modules/booklisp/ ./readme-source/readme.md ./README.md"
     },

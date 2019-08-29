@@ -14,8 +14,8 @@ function optionsReader(
 
     function getNanocommitOptions (packageFile) {
         return typeof packageFile.nanocommit === 'object'
-            && packagefile.nanocommit !== null
-            ? packagefile.nanocommit
+            && packageFile.nanocommit !== null
+            ? packageFile.nanocommit
             : {};
     }
 
