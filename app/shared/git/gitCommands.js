@@ -35,18 +35,22 @@ function gitCommands(child_process) {
         childProcess.execSync(commitCommand, { stdio: 'inherit' });
     }
 
-    function autosquash() {
-        const command = 'git rebase --interactive --autosquash';
+    function getSquashCount() {
+        const command = 'git log --oneline -50';
 
-        childProcess.execSync(command, { stdio: 'inherit' });
+        return childProcess
+            .execSync(command, { encoding: 'utf8' })
+            .split('\n')
+            .filter((log) => /squash\!/.test(log))
+            .length;
     }
 
     return {
         addAllChanges: addAllChanges,
         addFile: addFile,
-        autosquash: autosquash,
         commitWithMessage: commitWithMessage,
         getShortStatus: getShortStatus,
+        getSquashCount: getSquashCount,
         patchCommit: patchCommit
     }
 

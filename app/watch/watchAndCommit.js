@@ -49,23 +49,25 @@ function watchAndCommit(
         watcher.on('change', testRunner);
     }
 
+    function watchForUnhandledErrors() {
+        process.on('uncaughtException', function() {
+            console.log('[nanocommit] An async test process failed, rerunning on next change.');
+        });
+    }
+
     function watchForExit() {
         const options = configStore.getConfig();
 
         process.on('SIGINT', function () {
-            console.log('options', options);
-
             if (options.autosquashable) {
-                watcherPrompts
-                    .runAutosquash(function (data) {
-                        if (data.shouldAutosquash) {
-                            gitCommands.autosquash();
-                            process.exit();
-                        }
-                    });
-            } else {
-                process.exit();
+                const squashCount = gitCommands.getSquashCount();
+                const squashCommand = `git rebase -i --autosquash HEAD~${squashCount + 1}`;
+
+                console.log('To squash all watch-related commits, run the following command:');
+                console.log(`\n${squashCommand}\n`);
             }
+
+            process.exit();
         });
     }
 
@@ -73,6 +75,7 @@ function watchAndCommit(
         const options = configStore.getConfig();
 
         if (options.watchFiles) {
+            watchForUnhandledErrors();
             watchForExit();
 
             watcherPrompts
