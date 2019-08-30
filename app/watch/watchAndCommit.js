@@ -53,6 +53,7 @@ function watchAndCommit(
         const options = configStore.getConfig();
 
         process.on('SIGINT', function () {
+            console.log(options);
             if (options.autosquashable) {
                 watcherPrompts
                     .runAutosquash(function (data) {
