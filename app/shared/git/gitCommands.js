@@ -35,9 +35,16 @@ function gitCommands(child_process) {
         childProcess.execSync(commitCommand, { stdio: 'inherit' });
     }
 
+    function autosquash() {
+        const command = 'git rebase --interactive --autosquash';
+
+        childProcess.execSync(command, { stdio: 'inherit' });
+    }
+
     return {
         addAllChanges: addAllChanges,
         addFile: addFile,
+        autosquash: autosquash,
         commitWithMessage: commitWithMessage,
         getShortStatus: getShortStatus,
         patchCommit: patchCommit

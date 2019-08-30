@@ -1,6 +1,7 @@
 function watchAndCommit(
     chokidar,
     configStore,
+    gitCommands,
     testAndCommit,
     watcherPrompts
 ) {
@@ -30,8 +31,8 @@ function watchAndCommit(
         const options = configStore.getConfig();
 
         return options.autosquashable
-         ? `squash! ${autocommitMessage}`
-         : autocommitMessage;
+            ? `squash! ${autocommitMessage}`
+            : autocommitMessage;
     }
 
     function watchFiles(options, commitMessage) {
@@ -49,9 +50,20 @@ function watchAndCommit(
     }
 
     function watchForExit() {
+        const options = configStore.getConfig();
+
         process.on('SIGINT', function () {
-            console.log('Stopping process');
-            process.exit();
+            if (options.autosquashable) {
+                watcherPrompts
+                    .runAutosquash(function (data) {
+                        if (data.shouldAutosquash) {
+                            gitCommands.autosquash();
+                            process.exit();
+                        }
+                    });
+            } else {
+                process.exit();
+            }
         });
     }
 

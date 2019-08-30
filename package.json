@@ -22,7 +22,8 @@
         ],
         "defaultCommandArgs": null,
         "commitMessage": null,
-        "customAnnotations": null
+        "customAnnotations": null,
+        "autosquashable": true
     },
     "repository": {
         "type": "git",

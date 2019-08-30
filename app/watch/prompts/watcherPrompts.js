@@ -12,8 +12,20 @@ function watcherPrompts (
         ]);
     }
 
+    function runAutosquash() {
+        return inquirer.prompt([
+            {
+                name: 'shouldAutosquash',
+                message: 'Do you want to run autosquash now?',
+                type: 'confirm',
+                default: true
+            }
+        ])
+    }
+
     return {
-        getCurrentTask
+        getCurrentTask,
+        runAutosquash
     };
 }
 
