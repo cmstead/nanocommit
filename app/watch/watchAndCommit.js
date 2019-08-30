@@ -26,7 +26,12 @@ function watchAndCommit(
     }
 
     function buildCommitMessage(commitMessage) {
-        return `[Autocommit][WIP] ${commitMessage}`;
+        const autocommitMessage = `[Autocommit][WIP] ${commitMessage}`;
+        const options = configStore.getConfig();
+
+        return options.autosquashable
+         ? `squash! ${autocommitMessage}`
+         : autocommitMessage;
     }
 
     function watchFiles(options, commitMessage) {

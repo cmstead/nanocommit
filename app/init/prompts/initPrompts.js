@@ -31,6 +31,13 @@ function initPrompts() {
         )
     ];
 
+    const makeWatchCommitsAutosquashable = [
+        yesNoListFactory(
+            'autosquashable',
+            'Make commits from watch auto-squashable?'
+        )
+    ];
+
     const writeNewTestCommand = [
         {
             name: 'newTestCommand',
@@ -117,6 +124,7 @@ function initPrompts() {
         defaultCommandArgs,
         defaultCommitMessage,
         installLocalInstance,
+        makeWatchCommitsAutosquashable,
         replaceTestCommand,
         watchPath,
         writeNewTestCommand,

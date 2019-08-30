@@ -51,6 +51,9 @@ function init(
             .then(prompts.conditionalGetCustomAnnotations(results))
             .then(storeResult)
 
+            .then(prompts.makeWatchCommitsAutosquashable)
+            .then(storeResult)
+
             .then(prompts.getWatchPaths)
             .then(storeResult)
 
@@ -83,6 +86,9 @@ function init(
             .then(storeResult)
 
             .then(prompts.conditionalGetCustomAnnotations(results))
+            .then(storeResult)
+
+            .then(prompts.makeWatchCommitsAutosquashable)
             .then(storeResult)
 
             .then(prompts.getWatchPaths)

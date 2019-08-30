@@ -34,6 +34,8 @@ function configBuilder (
             config.customAnnotations = initOptions.customAnnotations;
         }
 
+        config.autosquashable = isYes(initOptions.autosquashable);
+
         config.watchFiles = initOptions.watchPaths;
 
         return optionsUtils.mergeOptions(config, defaultConfig);
