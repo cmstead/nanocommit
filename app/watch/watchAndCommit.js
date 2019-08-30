@@ -48,6 +48,12 @@ function watchAndCommit(
         watcher.on('change', testRunner);
     }
 
+    function watchForExit() {
+        process.on('SIGINT', function () {
+            console.log('Stopping process');
+        });
+    }
+
     return function startWatcher() {
         const options = configStore.getConfig();
 
