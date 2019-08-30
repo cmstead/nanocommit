@@ -58,6 +58,8 @@ function watchAndCommit(
         const options = configStore.getConfig();
 
         if (options.watchFiles) {
+            watchForExit();
+            
             watcherPrompts
                 .getCurrentTask()
                 .then((data) => watchFiles(options, data.commitMessage));
