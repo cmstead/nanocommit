@@ -51,6 +51,7 @@ function watchAndCommit(
     function watchForExit() {
         process.on('SIGINT', function () {
             console.log('Stopping process');
+            process.exit();
         });
     }
 
@@ -59,7 +60,7 @@ function watchAndCommit(
 
         if (options.watchFiles) {
             watchForExit();
-            
+
             watcherPrompts
                 .getCurrentTask()
                 .then((data) => watchFiles(options, data.commitMessage));
