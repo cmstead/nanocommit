@@ -20,6 +20,7 @@ function watchAndCommit(
         options.blindCommit = true;
         options.commitMessage = commitMessage;
         options.annotations = null;
+        options.isWatching = true;
 
         configStore.setConfig(options);
 
@@ -28,11 +29,8 @@ function watchAndCommit(
 
     function buildCommitMessage(commitMessage) {
         const autocommitMessage = `[Autocommit][WIP] ${commitMessage}`;
-        const options = configStore.getConfig();
 
-        return options.autosquashable
-            ? `squash! ${autocommitMessage}`
-            : autocommitMessage;
+        return autocommitMessage;
     }
 
     function watchFiles(options, commitMessage) {

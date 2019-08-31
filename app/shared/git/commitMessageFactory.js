@@ -52,12 +52,21 @@ function commitMessageFactory(
 
     }
 
+    function returnCommitMessage(options, callback) {
+        callback(options.commitMessage);
+    }
+
     function getCommitMessage(callback) {
         const options = configStore.getConfig();
+        let getMessageAction;
 
-        const getMessageAction = hasDefaultMessage(options)
-            ? getMessageFromOptions
-            : getMessageFromUser;
+        if(hasDefaultMessage(options) && options.isWatching) {
+            getMessageAction = returnCommitMessage;
+        } else if(hasDefaultMessage(options)) {
+            getMessageAction = getMessageFromOptions;
+        } else {
+            getMessageAction = getMessageFromUser;
+        }
 
         prepareAnnotation(options, function (annotation) {
             getMessageAction(options, function (commitMessage) {

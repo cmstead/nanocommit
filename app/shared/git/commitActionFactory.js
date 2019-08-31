@@ -44,12 +44,29 @@ function commitActionFactory(
         gitCommands.commitWithMessage(message);
     }
 
+    function watchCommit(message) {
+        const isLogged = gitCommands.isLastLog(message);
+
+        gitCommands.addAllChanges();
+
+        if(isLogged) {
+            gitCommands.squashCommit();
+        } else {
+            gitCommands.commitWithMessage(message);
+        }
+    }
+
     function getCommitAction() {
+        console.log('getting commit action');
         const options = configStore.getConfig();
 
-        return options.blindCommit
-            ? blindCommit
-            : selectiveCommit;
+        if(options.isWatching) {
+            return watchCommit;
+        } else if(options.blindCommit) {
+            return blindCommit;
+        } else {
+            return selectiveCommit;
+        }
     }
 
     return {

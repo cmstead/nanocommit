@@ -45,13 +45,36 @@ function gitCommands(child_process) {
             .length;
     }
 
+    function escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function isLastLog(message) {
+        console.log(message);
+        const command = 'git log --oneline';
+        const messagePattern = new RegExp(escapeRegex(message));
+        const lastLogMessage = childProcess
+            .execSync(command, { encoding: 'utf8' })
+            .split('\n')[0];
+
+        return messagePattern.test(lastLogMessage);
+    }
+
+    function squashCommit(message) {
+        const command = `git commit --squash"`;
+
+        childProcess.execSync(command, { stdio: 'inherit' });
+    }
+
     return {
         addAllChanges: addAllChanges,
         addFile: addFile,
         commitWithMessage: commitWithMessage,
+        isLastLog: isLastLog,
         getShortStatus: getShortStatus,
         getSquashCount: getSquashCount,
-        patchCommit: patchCommit
+        patchCommit: patchCommit,
+        squashCommit: squashCommit
     }
 
 }
