@@ -45,12 +45,12 @@ function commitActionFactory(
     }
 
     function watchCommit(message) {
-        const isLogged = gitCommands.isLastLog(message);
+        const lastLogHash = gitCommands.getLastLogHash(message);
 
         gitCommands.addAllChanges();
 
-        if(isLogged) {
-            gitCommands.squashCommit();
+        if(Boolean(lastLogHash)) {
+            gitCommands.squashCommit(lastLogHash);
         } else {
             gitCommands.commitWithMessage(message);
         }

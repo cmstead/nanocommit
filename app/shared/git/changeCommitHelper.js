@@ -15,9 +15,6 @@ function changeCommitHelper(
     function commitChanges() {
         const commitAction = commitActionFactory.getCommitAction();
 
-        console.log(commitAction);
-        console.log(changesExistToCommit());
-
         if (changesExistToCommit()) {
             commitMessageFactory
                 .getCommitMessage(commitAction);

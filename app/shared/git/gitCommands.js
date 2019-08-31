@@ -49,19 +49,20 @@ function gitCommands(child_process) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    function isLastLog(message) {
-        console.log(message);
+    function getLastLogHash(message) {
         const command = 'git log --oneline';
         const messagePattern = new RegExp(escapeRegex(message));
         const lastLogMessage = childProcess
             .execSync(command, { encoding: 'utf8' })
             .split('\n')[0];
 
-        return messagePattern.test(lastLogMessage);
+        return messagePattern.test(lastLogMessage)
+            ? lastLogMessage.split(' ')[0]
+            : null;
     }
 
-    function squashCommit(message) {
-        const command = `git commit --squash"`;
+    function squashCommit(hash) {
+        const command = `git commit --squash ${hash}`;
 
         childProcess.execSync(command, { stdio: 'inherit' });
     }
@@ -70,7 +71,7 @@ function gitCommands(child_process) {
         addAllChanges: addAllChanges,
         addFile: addFile,
         commitWithMessage: commitWithMessage,
-        isLastLog: isLastLog,
+        getLastLogHash: getLastLogHash,
         getShortStatus: getShortStatus,
         getSquashCount: getSquashCount,
         patchCommit: patchCommit,
