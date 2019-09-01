@@ -44,11 +44,6 @@ function prompts(
             .displayPrompt(initPrompts.useCommitAnnotations);
     }
 
-    function makeWatchCommitsAutosquashable() {
-        return prompt
-            .displayPrompt(initPrompts.makeWatchCommitsAutosquashable);
-    }
-
     function conditionalDefaultCommitMessage(results) {
         if (results.useDefaultCommitMessage === 'Yes') {
             return prompt
@@ -147,7 +142,6 @@ function prompts(
         getTestCommand,
         getWatchPaths,
         installLocalInstance,
-        makeWatchCommitsAutosquashable,
         replaceTestCommand,
         useExistingTest
     };

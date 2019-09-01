@@ -53,28 +53,11 @@ function watchAndCommit(
         });
     }
 
-    function watchForExit() {
-        const options = configStore.getConfig();
-
-        process.on('SIGINT', function () {
-            if (options.autosquashable) {
-                const squashCount = gitCommands.getSquashCount();
-                const squashCommand = `git rebase -i --autosquash HEAD~${squashCount + 1}`;
-
-                console.log('To squash all watch-related commits, run the following command:');
-                console.log(`\n${squashCommand}\n`);
-            }
-
-            process.exit();
-        });
-    }
-
     return function startWatcher() {
         const options = configStore.getConfig();
 
         if (options.watchFiles) {
             watchForUnhandledErrors();
-            watchForExit();
 
             watcherPrompts
                 .getCurrentTask()

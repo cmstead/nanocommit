@@ -6,8 +6,7 @@ function defaultConfig () {
         commitMessage: null,
         annotations: null,
         customAnnotations: null,
-        watchFiles: null,
-        autosquashable: false
+        watchFiles: null
     };
 }
 
