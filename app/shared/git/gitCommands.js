@@ -62,7 +62,7 @@ function gitCommands(child_process) {
     }
 
     function squashCommit(hash) {
-        const command = `git commit --squash ${hash}`;
+        const command = `git commit --squash ${hashƒ}`;
 
         childProcess.execSync(command, { stdio: 'inherit' });
     }
