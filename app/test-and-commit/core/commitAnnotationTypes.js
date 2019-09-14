@@ -10,13 +10,15 @@ function commitAnnotationTypes(
     annotations[buildAnnotationKey('nanocommit')] =
         {
             'Bug Fix': '[Bug]',
-            'Code Reorganization': '[Reorg]',
+            'Code Refinement': '[Refinement]',
             'Comment (Add/Remove)': '[Comment]',
             'Configuration': '[Config]',
             'Documentation': '[Doc]',
             'Feature': '[Feature]',
             'Formatting': '[Formatting]',
             'Refactoring': '[Refactor]',
+            'Refactoring (Automated)': '[Auto-Refactor]',
+            'Unproven Refactoring': '[!Refactor]',
             'Test': '[Test]',
             'Unstable/Won\'t Run': '[!Unstable]',
             'Work In Progress': '[WIP]',
