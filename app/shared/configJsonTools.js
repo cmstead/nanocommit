@@ -1,23 +1,15 @@
 function configJsonTools (
-    fs,
-    path
+    configurationManager
 ) {
-    
-    const configLocation = path.join(
-        process.cwd(),
-        '.nanocommit.conf.json'
-    );
 
     function loadConfigFile() {
-        const packageFile = require(configLocation);
-
-        return packageFile;
+        return configurationManager.readConfig();
     }
 
     function writeConfigFile(packageObject) {
-        const packageContent = JSON.stringify(packageObject, null, 4);
+        configurationManager.setConfig(packageObject);
 
-        fs.writeFileSync(configLocation, packageContent);
+        configurationManager.writeConfig();
     }
 
     return {

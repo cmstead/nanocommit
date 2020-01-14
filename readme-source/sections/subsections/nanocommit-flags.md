@@ -12,4 +12,6 @@ All flags for nanocommit are simply standalone and accept no arguments.  Current
 
 - `nanocommit --commit-only` -- This will run just the commit portion of the nanocommit run, skipping the testing phase.  This is especially helpful if you either have no tests currently (sad face), you ran the tests and just want the tag annotations, or you are committing changes which are not necessarily part of the production code.
 
+- `nanocommit --test-only` -- This will run just the test portion of the nanocommit run, skipping the commit phase.  This is especially helpful when you want to just run tests and get an output (like in a deployment situation).
+
 - `nanocommit --watch` -- Watches files in configuration, reruns tests and commits when tests pass.

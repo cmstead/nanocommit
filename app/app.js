@@ -4,6 +4,7 @@ function app(
     help,
     init,
     testAndCommit,
+    testOnly,
     version,
     watchAndCommit
 ) {
@@ -14,12 +15,15 @@ function app(
 
         const isInitCommand = Boolean(commandArgs.init);
         const isHelpCommand = Boolean(commandArgs.help);
+        const isTestOnlyCommand = Boolean(commandArgs['test-only']);
         const isCommitCommand = Boolean(commandArgs['commit-only']);
         const isVersionCommand = Boolean(commandArgs['version']);
         const isWatchCommand = Boolean(commandArgs['watch']);
 
         if (isHelpCommand) {
             help();
+        } else if(isTestOnlyCommand) {
+            testOnly();
         } else if (isInitCommand) {
             init();
         } else if (isCommitCommand) {

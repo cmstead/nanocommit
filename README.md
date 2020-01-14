@@ -121,6 +121,14 @@ When nanocommit is installed locally, run this from your package root:
 node ./node_modules/nanocommit/
 ```
 
+If nanocommit is installed and configured to run from the `npm test` command, you can pass flags through like the following example:
+
+**Important note: the ` -- ` is required by npm. Don't forget to include it!**
+
+```
+npm test -- --test-only
+```
+
 If nanocommit is installed globally, just run this:
 
 ```
@@ -137,6 +145,8 @@ All flags for nanocommit are simply standalone and accept no arguments.  Current
 - `nanocommit --init` -- This will initialize your project with a nanocommit configuration.  The configuration will reside in your `package.json` file if you have one, otherwise it will exist in a standalone file called `.nanocommit.conf.json`.
 
 - `nanocommit --commit-only` -- This will run just the commit portion of the nanocommit run, skipping the testing phase.  This is especially helpful if you either have no tests currently (sad face), you ran the tests and just want the tag annotations, or you are committing changes which are not necessarily part of the production code.
+
+- `nanocommit --test-only` -- This will run just the test portion of the nanocommit run, skipping the commit phase.  This is especially helpful when you want to just run tests and get an output (like in a deployment situation).
 
 - `nanocommit --watch` -- Watches files in configuration, reruns tests and commits when tests pass.
     

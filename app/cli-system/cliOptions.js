@@ -10,6 +10,10 @@ function cliOptions() {
             type: Boolean
         },
         {
+            name: 'test-only',
+            type: Boolean
+        },
+        {
             name: 'commit-only',
             alias: 'c',
             type: Boolean
