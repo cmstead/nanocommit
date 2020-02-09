@@ -15,7 +15,7 @@
     },
     "nanocommit": {
         "testCommand": "npm run test-and-build",
-        "blindCommit": false,
+        "blindCommit": true,
         "annotations": "nanocommit",
         "watchFiles": [
             "./app/**/*.js"
