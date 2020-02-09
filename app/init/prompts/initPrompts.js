@@ -47,6 +47,14 @@ function initPrompts() {
         )
     ];
 
+    const playSound = [
+        yesNoListFactory(
+            'playSound',
+            'Play sound on passing tests?',
+            'No'
+        )
+    ];
+
     const useDefaultCommitMessage = [
         yesNoListFactory(
             'useDefaultCommitMessage',
@@ -117,6 +125,7 @@ function initPrompts() {
         defaultCommandArgs,
         defaultCommitMessage,
         installLocalInstance,
+        playSound,
         replaceTestCommand,
         watchPath,
         writeNewTestCommand,

@@ -1,7 +1,6 @@
 function watchAndCommit(
     chokidar,
     configStore,
-    gitCommands,
     testAndCommit,
     watcherPrompts
 ) {

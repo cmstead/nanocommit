@@ -88,6 +88,9 @@ function init(
             .then(prompts.getWatchPaths)
             .then(storeResult)
 
+            .then(prompts.playSound)
+            .then(storeResult)
+
             .then(() => configJsonSetup.doSetup(results))
             .catch((error) => console.log('Unable to complete setup', error));
     }

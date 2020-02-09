@@ -1,6 +1,7 @@
 function testRunner(
     child_process,
-    configStore
+    configStore,
+    playSound
 ) {
     const childProcess = child_process;
 
@@ -35,6 +36,10 @@ function testRunner(
         const testCommand = buildTestCommand(args, options);
 
         childProcess.execSync(testCommand, { stdio: 'inherit' });
+
+        if(options.playSound) {
+            playSound.play(__dirname + '/../../../assets/small-bell-ringing.wav', () => null);
+        }
     }
 
     return {

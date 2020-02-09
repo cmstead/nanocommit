@@ -129,6 +129,12 @@ function prompts(
         }
     }
 
+    function playSound() {
+        return prompt
+            .displayPrompt(initPrompts.playSound);
+
+    }
+
     return {
         conditionalGetCustomAnnotations,
         conditionalDefaultCommitMessage,
@@ -142,6 +148,7 @@ function prompts(
         getTestCommand,
         getWatchPaths,
         installLocalInstance,
+        playSound,
         replaceTestCommand,
         useExistingTest
     };

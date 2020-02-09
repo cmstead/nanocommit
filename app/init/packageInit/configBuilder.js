@@ -36,6 +36,8 @@ function configBuilder (
 
         config.watchFiles = initOptions.watchPaths;
 
+        config.playSound = initOptions.playSound;
+
         return optionsUtils.mergeOptions(config, defaultConfig);
     }
     

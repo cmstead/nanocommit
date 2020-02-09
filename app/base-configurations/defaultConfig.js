@@ -6,7 +6,8 @@ function defaultConfig () {
         commitMessage: null,
         annotations: null,
         customAnnotations: null,
-        watchFiles: null
+        watchFiles: null,
+        playSound: false
     };
 }
 
